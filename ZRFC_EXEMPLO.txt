@@ -1,0 +1,25 @@
+FUNCTION zrfc_exemplo.
+*"----------------------------------------------------------------------
+*"*"Interface local:
+*"  IMPORTING
+*"     REFERENCE(LGNUM) LIKE  /SCWM/T300T-LGNUM
+*"  EXPORTING
+*"     REFERENCE(LNUMT) LIKE  /SCWM/T300T-LNUMT
+*"----------------------------------------------------------------------
+
+  SELECT * FROM /scwm/t300t INTO TABLE @DATA(ewm) WHERE lgnum = @lgnum AND 
+                                                                                                                             spras = 'P'.
+
+  IF sy-subrc = 0.
+    LOOP AT ewm INTO DATA(current_ewm).
+      IF lnumt IS INITIAL.
+        lnumt = current_ewm-lnumt.
+      ENDIF.
+    ENDLOOP.
+  ENDIF.
+
+  IF lnumt IS INITIAL.
+    lnumt = 'Not Found'.
+  ENDIF.
+
+ENDFUNCTION.

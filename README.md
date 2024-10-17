@@ -1,2 +1,2 @@
 # PilotoRFC
-Este repositório contém um projeto em Delphi FMX exemplificando a integração com sistemas SAP.
+Este repositório contém um projeto em Delphi FMX exemplificando o consumo de funções SAP.
